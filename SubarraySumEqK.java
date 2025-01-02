@@ -3,9 +3,10 @@ public class SubarraySumEqK {
     int counter = 0;
     int pointer1=0 ;
     int pointer2= pointer1;
+
+
     public int subarraySum(int[] nums, int k) {
         int diff=k;
-
         
         while ( pointer2 <nums.length){
 
@@ -21,6 +22,7 @@ public class SubarraySumEqK {
                 counter++; 
                 System.out.println("Compteur atteint quand diff egale : "+counter);
                 // pointer2 ++;
+                diff=k;
                 pointer1 =pointer2;
 
             } 
@@ -39,6 +41,7 @@ public class SubarraySumEqK {
                 System.out.println("nbr suivant "+nums[pointer2]);
 
             } else {
+                
                 break;
             }
 
