@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Solution1 {
  
     int[]tab;
@@ -98,19 +100,48 @@ public class Solution1 {
     // After adding 2 to nums[3], the array is [-2,-1,3,6], and the sum of even values is -2 + 6 = 4.
     
 
+    public int repeatedNTimes(int[] nums) {
+        // hashmap   
+        Map<Integer,Integer> hash = new HashMap();
+        for (int c : nums){
+            if (  ! hash.keySet().contains(c) ){
+                hash.put(c, 1);
+            } else {
+                hash.put(c,hash.get(c)+1); // increm si deja present dans hashmap 
+            }
+        }
 
+        for (int  w : hash.keySet()){
+            System.out.println("val atteinte : "+ hash.get(w)); 
+
+            if ( hash.get(w) == (nums.length /2)){
+                return w; 
+            }
+        }
+
+        return 0; 
+   
+       }
+
+
+
+       public int lengthOfLongestSubstring(String s) {
+        
+        
+        return 0;
+       } 
 
     public static void main(String[] args){
         Solution1 w = new Solution1();
-        int[] nums1 = {1,2,3,4};
-        int[][] q1 = {{1,0},{-3,1},{-4,0},{2,3}};
-        System.out.println( "1 " + q1.length); // longueur 
-        System.out.println("2q" + q1[0].length); // largeur 
-        System.out.println(" testcase 1 :  "+w.sumEvenAfterQueries(nums1,q1));
-        // expected answer: [8,6,2,4]
+        int[] nums = {1,2,3,3}; 
 
+        System.out.println("tab "+w.repeatedNTimes(nums));
 
     }
+
+// Input: nums = [1,2,3,3]
+// Output: 3
+
 
 
 }

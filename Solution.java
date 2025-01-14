@@ -54,6 +54,52 @@ public class Solution {
         }
     }
     
+
+    int maxlength  ;
+
+    public int lengthOfLongestSubstring(String s) {
+        // ne pas check ttes les possibi 
+        // commencer du plus grand au plus petit 
+        maxlength=s.length();  
+
+        int pt1= 0;
+         
+        Map<Character, Integer> hash = new HashMap<>(); 
+
+        while (maxlength>0){
+            // bsn d'un while  ?
+            // while maxlegth >0  
+
+            if ( pt1+maxlength>= maxlength){
+                break ; 
+
+            }
+            String sub = s.substring(pt1,pt1+ maxlength); 
+            for ( int i =0; i<sub.length(); i++){
+                if (! hash.containsKey(sub.charAt(i))){
+                    hash.put(sub.charAt(i), 1);
+                } else {
+                    pt1++; // increm le pointer pr passer index suiv 
+                    break; 
+                }
+
+            }
+
+
+
+        }
+        maxlength--; // decrem 
+        pt1=0; // recommencer des debut 
+
+        return maxlength ; // changer apres 
+
+
+    }
+
+
+// Input: s = "abcabcbb"
+// Output: 3 
+    
 }
 
 
