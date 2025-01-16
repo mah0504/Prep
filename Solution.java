@@ -54,7 +54,6 @@ public class Solution {
         }
     }
     
-
     int maxlength  ;
 
     public int lengthOfLongestSubstring(String s) {
@@ -65,37 +64,70 @@ public class Solution {
         int pt1= 0;
          
         Map<Character, Integer> hash = new HashMap<>(); 
+ 
+    // corriger condition 
+    // et increm pointer 
 
-        while (maxlength>0){
+        while (maxlength>0) { 
+
             // bsn d'un while  ?
             // while maxlegth >0  
 
-            if ( pt1+maxlength>= maxlength){
-                break ; 
+            if ( pt1+maxlength> s.length()){
 
-            }
-            String sub = s.substring(pt1,pt1+ maxlength); 
+                break ; 
+                
+            } else {
+                String sub = s.substring(pt1, pt1+maxlength ); 
+
+            System.out.println("substring 1 :  " + sub);
+
             for ( int i =0; i<sub.length(); i++){
+            
                 if (! hash.containsKey(sub.charAt(i))){
+
                     hash.put(sub.charAt(i), 1);
+                    System.out.println("char put  : "+sub.charAt(i) );
                 } else {
+                    // quand on increm le ptr on ne verif pas 
+
+
                     pt1++; // increm le pointer pr passer index suiv 
+                    hash.clear();  // pr recommencer le check 
                     break; 
+
+                    // s'arrête correctement 
                 }
 
             }
 
-
+            
 
         }
-        maxlength--; // decrem 
-        pt1=0; // recommencer des debut 
+        maxlength--; 
+
+            }
+            
+
+        // maxlength--; // decrem 
+        // pt1=0; // recommencer des debut 
 
         return maxlength ; // changer apres 
 
 
     }
 
+
+    public static void main(String[] args){
+        Solution w = new Solution();
+        String s2 ="pwwkew";
+
+        String s3  = "bbbbb"; // output =1 
+        String s1 = "abcabcbb"; // output =3 
+        System.out.println("testcase 1 :  "+w.lengthOfLongestSubstring(s1));
+
+    
+    }
 
 // Input: s = "abcabcbb"
 // Output: 3 
