@@ -54,82 +54,53 @@ public class Solution {
         }
     }
     
-    int maxlength  ;
+
+    int maxlength , pt1;
+    Map<Character,Integer> hash = new HashMap<>();
 
     public int lengthOfLongestSubstring(String s) {
-        // ne pas check ttes les possibi 
-        // commencer du plus grand au plus petit 
-        maxlength=s.length();  
+        pt1=0;
+        maxlength=s.length();
 
-        int pt1= 0;
-         
-        Map<Character, Integer> hash = new HashMap<>(); 
- 
-    // corriger condition 
-    // et increm pointer 
+        while (maxlength>0 && pt1<s.length()){
+            if ( pt1 +maxlength>s.length()){
+                break; //break du wile ? verif 
+            }else {
+                String sub = s.substring(pt1,pt1+maxlength); 
 
-        while (maxlength>0) { 
-
-            // bsn d'un while  ?
-            // while maxlegth >0  
-
-            if ( pt1+maxlength> s.length()){
-
-                break ; 
+                for ( int i=0 ; i<s.length();i++){
+                    if ( !hash.containsKey(sub.charAt(i)) ){
+                        hash.put(sub.charAt(i), 1); 
+                    } else {
+                        hash.clear();
+                        pt1++;
+                        break;
+                    } 
                 
-            } else {
-                String sub = s.substring(pt1, pt1+maxlength ); 
-
-            System.out.println("substring 1 :  " + sub);
-
-            for ( int i =0; i<sub.length(); i++){
-            
-                if (! hash.containsKey(sub.charAt(i))){
-
-                    hash.put(sub.charAt(i), 1);
-                    System.out.println("char put  : "+sub.charAt(i) );
-                } else {
-                    // quand on increm le ptr on ne verif pas 
-
-
-                    pt1++; // increm le pointer pr passer index suiv 
-                    hash.clear();  // pr recommencer le check 
-                    break; 
-
-                    // s'arrête correctement 
                 }
 
             }
 
-            
-
-        }
-        maxlength--; 
-
-            }
-            
-
-        // maxlength--; // decrem 
-        // pt1=0; // recommencer des debut 
-
-        return maxlength ; // changer apres 
-
+        maxlength--;
+        } 
+     return maxlength;
 
     }
 
 
     public static void main(String[] args){
         Solution w = new Solution();
-        String s2 ="pwwkew";
-
-        String s3  = "bbbbb"; // output =1 
         String s1 = "abcabcbb"; // output =3 
+        String s2 ="pwwkew";
+        String s3  = "bbbbb"; // output =1 
+
         System.out.println("testcase 1 :  "+w.lengthOfLongestSubstring(s1));
 
     
     }
 
 // Input: s = "abcabcbb"
+
 // Output: 3 
     
 }
