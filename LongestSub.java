@@ -3,43 +3,29 @@
 
     public class LongestSub {
     
-        int maxlength, pt1;
-        Map<Character, Integer> hash = new HashMap<>();
-    
-        public int lengthOfLongestSubstring(String s) {
-            pt1 = 0;
-            maxlength = s.length();
-            int longest = 0;
-    
-            while (maxlength > 0) {
-                if (pt1 + maxlength > s.length()) {
-                    pt1 = 0;
-                    maxlength--;
-                } else {
-                    String sub = s.substring(pt1, pt1 + maxlength);
-                    hash.clear();
-    
-                    boolean hasDuplicate = false;
-                    for (int i = 0; i < sub.length(); i++) {
-                        if (!hash.containsKey(sub.charAt(i))) {
-                            System.out.println("char à mettre : " + sub.charAt(i));
-                            hash.put(sub.charAt(i), 1);
-                        } else {
-                            hasDuplicate = true;
-                            break;
-                        }
-                    }
-    
-                    if (!hasDuplicate) {
-                        longest = maxlength;
-                        break;
-                    }
-    
-                    pt1++;
-                }
+
+    public int lengthOfLongestSubstring(String s) {
+        int n = s.length();
+        Set<Character> set = new HashSet<>();
+        int longest = 0;
+        int left = 0, right = 0;
+
+        while (right < n) {
+            if (!set.contains(s.charAt(right))) {
+                set.add(s.charAt(right));
+                longest = Math.max(longest, right - left + 1); // y ? 
+                right++;
+            } else {
+                set.remove(s.charAt(left));
+                left++;
             }
-            return longest;
         }
+
+        return longest;
+    }
+
+
+
     
         public static void main(String[] args) {
             LongestSub w = new LongestSub();
