@@ -5,15 +5,18 @@
 class KruskalImplem {
     int fathers[100];
     int n, m;
-    int nbr_edges=0;
-    int mst_weight=0;
+    int nbr_edges;
+    int mst_weight;
 
 public:
+
     void initialize(int nodes) {
         n = nodes;
         for (int i = 0; i < 100; i++) {
             fathers[i] = i; 
         }
+        nbr_edges = 0;
+        mst_weight = 0;
     }
 
     int find(int x) {
@@ -30,10 +33,11 @@ public:
     }
 
     void run() {
+        
         std::cin >> n >> m;  // Nombre de nœuds et arêtes
 
         std::vector<std::pair<int, std::pair<int, int> > > edges;
-
+        initialize(n);
         for (int i = 0; i < m; i++) {
             int a, b, w;
             std::cin >> a >> b >> w;
@@ -44,7 +48,7 @@ public:
 
         int mst_n = 0;
 
-        while (nbr_edges < n - 1 && mst_n < m) {
+        while (nbr_edges < n - 1 || mst_n < m) {
             int a = edges[mst_n].second.first;
             int b = edges[mst_n].second.second;
             int w = edges[mst_n].first;
@@ -53,6 +57,8 @@ public:
                 unite(a, b);
                 mst_weight += w;
                 nbr_edges++;
+                std::cout << "Arête ajoutée au MST: " << a << " - " << b << " avec poids " << w << std::endl;
+
             }
             mst_n++;
         }
