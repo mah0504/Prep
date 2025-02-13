@@ -49,17 +49,32 @@ void primMST(vector<vector<int> > &graph) {
 int main() {
    vector<vector<int> > graph;
 
-    vector<int> row1; row1.push_back(0); row1.push_back(2); row1.push_back(0); row1.push_back(6); row1.push_back(0);
-    vector<int> row2; row2.push_back(2); row2.push_back(0); row2.push_back(3); row2.push_back(8); row2.push_back(5);
-    vector<int> row3; row3.push_back(0); row3.push_back(3); row3.push_back(0); row3.push_back(0); row3.push_back(7);
-    vector<int> row4; row4.push_back(6); row4.push_back(8); row4.push_back(0); row4.push_back(0); row4.push_back(9);
-    vector<int> row5; row5.push_back(0); row5.push_back(5); row5.push_back(7); row5.push_back(9); row5.push_back(0);
+    // vector<int> row1; row1.push_back(0); row1.push_back(2); row1.push_back(0); row1.push_back(6); row1.push_back(0);
+    // vector<int> row2; row2.push_back(2); row2.push_back(0); row2.push_back(3); row2.push_back(8); row2.push_back(5);
+    // vector<int> row3; row3.push_back(0); row3.push_back(3); row3.push_back(0); row3.push_back(0); row3.push_back(7);
+    // vector<int> row4; row4.push_back(6); row4.push_back(8); row4.push_back(0); row4.push_back(0); row4.push_back(9);
+    // vector<int> row5; row5.push_back(0); row5.push_back(5); row5.push_back(7); row5.push_back(9); row5.push_back(0);
+
+    // graph.push_back(row1);
+    // graph.push_back(row2);
+    // graph.push_back(row3);
+    // graph.push_back(row4);
+    // graph.push_back(row5);
+
+    vector<int> row1; row1.push_back(0); row1.push_back(2); row1.push_back(1); row1.push_back(5); row1.push_back(0); row1.push_back(0);
+    vector<int> row2; row2.push_back(2); row2.push_back(0); row2.push_back(2); row2.push_back(3); row2.push_back(0); row2.push_back(0);
+    vector<int> row3; row3.push_back(1); row3.push_back(2); row3.push_back(0); row3.push_back(3); row3.push_back(1); row3.push_back(0);
+    vector<int> row4; row4.push_back(0); row4.push_back(3); row4.push_back(3); row4.push_back(0); row4.push_back(1); row4.push_back(5);
+    vector<int> row5; row5.push_back(0); row5.push_back(0); row5.push_back(1); row5.push_back(1); row5.push_back(0); row5.push_back(2);
+    vector<int> row6; row6.push_back(0); row6.push_back(0); row6.push_back(0); row6.push_back(5); row6.push_back(2); row6.push_back(0);
 
     graph.push_back(row1);
     graph.push_back(row2);
     graph.push_back(row3);
     graph.push_back(row4);
     graph.push_back(row5);
+    graph.push_back(row6);
+
     primMST(graph);
     return 0;
 }
