@@ -7,7 +7,6 @@ class Solution(object):
         """
         # check 1e et 2e case au cas ou 
         
-        
         for i in range(0, len(matrix)):
             verif = target>= matrix[i][0] and target<=matrix[i][len(matrix[0])-1]
             print("result ligne", i , "pr val", verif )
@@ -36,14 +35,23 @@ class Solution(object):
             
         return False
         
+
+    def findMin(self, nums):
+
+        # liste rotated  , 
+        # 2 ptrs 1 limitant tt les elem >
+
+
+        return 0 
         
-        
 
 
 
 
 
-
+# [5,1,2,3,4] 2 plus petit que 3 -> chercher ici [5,1,2], middle 1 
+# [4,5,6,1,2,3] 6 >1 -> min =1 
+# [4,5,1,2,3]
 
 sol = Solution()
 
