@@ -35,47 +35,39 @@ class Solution(object):
             
         return False
         
+def findMin(self, nums):
+        s = 0
+        e= len(nums)-1
 
-    def findMin(self, nums):
+        while (s<=e):
 
-        # liste rotated  , 
-        # 2 ptrs 1 limitant tt les elem >
+            if (e-s)==0:
+                return nums[s]
+            if (e-s)==1:
+                return min(nums[s],nums[e])
 
 
+            mid = (s+e)//2 
+            if nums[mid]<nums[mid-1]:
+                return nums[mid]
+            elif nums[mid]>nums[s] and nums[mid]> nums[e]:
+                s = mid  
+            elif nums[mid]<nums[s] and nums[mid]<nums[e]:
+                e= mid 
+            elif nums[mid]>nums[s] and nums[mid]<nums[e]:
+                e= mid 
+            elif nums[mid]<nums[s] and nums[mid]>nums[e]:
+                s= mid
         return 0 
-        
 
 
 
 
-
-# [5,1,2,3,4] 2 plus petit que 3 -> chercher ici [5,1,2], middle 1 
-# [4,5,6,1,2,3] 6 >1 -> min =1 
-# [4,5,1,2,3]
 
 sol = Solution()
+nums = [3,4,5,1,2]
+nums1 = [4,5,6,7,0,1,2]
+nums2 = [11,13,15,17]
+# print("1st attempt ", sol.findMin(nums))
+print("2nd attempt : ", sol.findMin(nums2))
 
-matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]]
-target = 3
-
-# len(matrix)->longueur    len(matrix[0])->largeur
-
-# print("taille", len(matrix[0]))
-
-print(sol.searchMatrix(matrix, target))  # True attendu
-
-target = 13
-print(sol.searchMatrix(matrix, target))  # False attendu
-tab=[[1,3]]
-print(sol.searchMatrix( tab, 2))
-        #[[1,3,5,7],[10,11,16,20],[23,30,34,60]] target  3 -> true
-        #[[1,3,5,7],[10,11,16,20],[23,30,34,60]] target 13 -> false
-
-
-
-
-        # comparer targe au 1er elem et dernier elem de chaque ligne 
-        # si inclu dedans return true
-        # si exclu return false
-        # dans cette ligne effectuer binary search aka utiliser medium 
-        # si on trv pas false
