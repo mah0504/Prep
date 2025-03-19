@@ -1,4 +1,4 @@
- def search(self, nums, target):
+def search(self, nums, target):
         s = 0 
         e =len(nums)-1
         # if len(nums) == 1 and nums[0]==target:
