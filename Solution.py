@@ -38,14 +38,11 @@ class Solution(object):
 def findMin(self, nums):
         s = 0
         e= len(nums)-1
-
         while (s<=e):
-
             if (e-s)==0:
                 return nums[s]
             if (e-s)==1:
                 return min(nums[s],nums[e])
-
 
             mid = (s+e)//2 
             if nums[mid]<nums[mid-1]:
@@ -61,13 +58,17 @@ def findMin(self, nums):
         return 0 
 
 
+def search(self, nums, target):
+    return 0 
 
+
+
+
+        
 
 
 sol = Solution()
-nums = [3,4,5,1,2]
-nums1 = [4,5,6,7,0,1,2]
-nums2 = [11,13,15,17]
-# print("1st attempt ", sol.findMin(nums))
-print("2nd attempt : ", sol.findMin(nums2))
 
+nums0 = [4,5,6,7,0,1,2], target = 0
+nums1 = [4,5,6,7,0,1,2], target = 3
+nums2 = [1], target = 0
